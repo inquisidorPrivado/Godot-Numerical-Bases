@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://hgnv3jnw5lvl"]
+
+[ext_resource type="Theme" uid="uid://bhpspptq1gpi2" path="res://Assets/conversor_theme.tres" id="1_b1dt7"]
+[ext_resource type="PackedScene" uid="uid://cxtuaqxjipj3e" path="res://Scenes/gatito.tscn" id="1_pvyxl"]
+[ext_resource type="Script" path="res://Scripts/conversor.gd" id="2_il0h5"]
+
+[node name="Conversor" type="CenterContainer"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 359.0
+offset_bottom = 297.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_b1dt7")
+script = ExtResource("2_il0h5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_b1dt7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Welcome" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "¡BIENVENIDO!"
+horizontal_alignment = 1
+
+[node name="Gatito" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_pvyxl")]
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="OptionMenu" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="From" type="Label" parent="PanelContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+text = "De "
+vertical_alignment = 1
+
+[node name="FromNumberBase" type="OptionButton" parent="PanelContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Decimal"
+popup/item_0/id = 0
+popup/item_1/text = "Binario"
+popup/item_1/id = 1
+popup/item_2/text = "Octal"
+popup/item_2/id = 2
+popup/item_3/text = "Hexadecimal"
+popup/item_3/id = 3
+
+[node name="To" type="Label" parent="PanelContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+text = "a "
+vertical_alignment = 1
+
+[node name="ToNumberBase" type="OptionButton" parent="PanelContainer/VBoxContainer/OptionMenu"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Decimal"
+popup/item_0/id = 0
+popup/item_1/text = "Binario"
+popup/item_1/id = 1
+popup/item_2/text = "Octal"
+popup/item_2/id = 2
+popup/item_3/text = "Hexadecimal"
+popup/item_3/id = 3
+
+[node name="IntroduceNumber" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ingrese su número
+"
+
+[node name="YourInput" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+clear_button_enabled = true
+
+[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="YourNumber" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "---
+"
+
+[node name="Result" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+position = Vector2(77, 152)
+offset = Vector2(100, 0)
+zoom = Vector2(2, 2)
+editor_draw_drag_margin = true
+
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/OptionMenu/FromNumberBase" to="." method="_on_from_number_base_item_selected"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/OptionMenu/ToNumberBase" to="." method="_on_to_number_base_item_selected"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/YourInput" to="." method="_on_your_input_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/YourInput" to="." method="_on_your_input_text_submitted"]

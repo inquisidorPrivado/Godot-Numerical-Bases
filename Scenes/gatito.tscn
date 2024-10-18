@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxtuaqxjipj3e"]
+
+[ext_resource type="Texture2D" uid="uid://s3x7jcr3gtir" path="res://Assets/Sprites/cat_faces1.png" id="1_722xp"]
+[ext_resource type="Texture2D" uid="uid://bj3cj6b1pygo7" path="res://Assets/Sprites/cat_faces3.png" id="2_fj3ln"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_c7rm0"]
+frames = 2
+frame_0/texture = ExtResource("1_722xp")
+frame_0/duration = 2.0
+frame_1/texture = ExtResource("2_fj3ln")
+frame_1/duration = 0.6
+
+[node name="Gatito" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AnimatedTexture_c7rm0")
