@@ -25,4 +25,4 @@ Este proyecto es una aplicación desarrollada en **Godot Engine** que permite co
 1. **Descarga Godot Engine** (Este proyecto se hizo con Godot 4.3) desde [aquí](https://godotengine.org/download). 
 2. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/conversor-numerico.git
+   git clone https://github.com/inquisidorPrivado/Godot-Numerical-Bases.git
